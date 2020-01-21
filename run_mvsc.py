@@ -40,7 +40,7 @@ def transform(dataset, perm_idx, model, view):
     """
     model.eval()
     latent_zs, golds = [], []
-    n_batch = (len(perm_idx) + BATCH_SIZE - 1) // BATCH_SIZE
+    n_batch = np.ceil(len(perm_idx) / BATCH_SIZE)
     for i in range(n_batch):
         indices = perm_idx[i*BATCH_SIZE:(i+1)*BATCH_SIZE]
         v1_batch, v2_batch = list(zip(*[dataset[idx][0] for idx in indices]))
