@@ -70,7 +70,7 @@ class Dataset(Dataset):
                     id_to_label.append(label)
                 data.append((v1_token_idices, v2_token_idices))
                 labels.append(label_to_id[label])
-                if label == UNK and np.random.random_sample() < .1:
+                if label == UNK and np.random.random_sample() < (1 - train_ratio):
                     self.tst_idx.append(len(data)-1)
                 else:
                     self.trn_idx.append(len(data)-1)
